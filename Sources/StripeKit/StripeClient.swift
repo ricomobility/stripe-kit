@@ -120,6 +120,9 @@ public final class StripeClient {
     // MARK: - WEBHOOKS
     public var webhookEndpoints: WebhookEndpointRoutes
     
+    // MARK: - TAX
+    public var taxCalculations: TaxCalculationRoutes
+    
     var handler: StripeAPIHandler
     
     /// Returns a StripeClient used to interact with the Stripe APIs.
@@ -224,5 +227,6 @@ public final class StripeClient {
         verificationReports = StripeVerificationReportRoutes(apiHandler: handler)
         
         webhookEndpoints = StripeWebhookEndpointRoutes(apiHandler: handler)
+        taxCalculations = StripeTaxCalculations(apiHandler: handler)
     }
 }
