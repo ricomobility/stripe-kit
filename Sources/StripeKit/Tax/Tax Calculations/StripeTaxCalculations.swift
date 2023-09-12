@@ -17,16 +17,7 @@ public struct StripeTaxCalculations: TaxCalculationRoutes {
         encoder.keyEncodingStrategy = .convertToSnakeCase
     }
     
-    public func calculate(
-        currency: Currency,
-        lineItems: [TaxCalculation.LineItem],
-        customerDetails: TaxCalculation.CustomerDetails
-    ) async throws -> TaxCalculation {
-        let request = TaxCalculation.Request(
-            currency: currency,
-            lineItems: lineItems,
-            customerDetails: customerDetails
-        )
+    public func calculate(_ request: TaxCalculation.Request) async throws -> TaxCalculation {
         let body = try encoder.encode(request)
         return try await apiHandler.send(method: .POST, path: taxCalculations, body: .data(body), headers: headers)
     }

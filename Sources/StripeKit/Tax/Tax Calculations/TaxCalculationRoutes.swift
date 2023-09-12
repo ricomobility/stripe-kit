@@ -3,9 +3,5 @@ import Foundation
 
 public protocol TaxCalculationRoutes: StripeAPIRoute {
 
-    func calculate(
-        currency: Currency,
-        lineItems: [TaxCalculation.LineItem],
-        customerDetails: TaxCalculation.CustomerDetails
-    ) async throws -> TaxCalculation
+    func calculate(_ request: TaxCalculation.Request) async throws -> TaxCalculation
 }

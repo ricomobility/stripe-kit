@@ -3,7 +3,7 @@ import Foundation
 
 extension TaxCalculation {
     
-    struct Request: Encodable {
+    public struct Request: Encodable {
         let currency: Currency
         let lineItems: [LineItem]
         let customerDetails: CustomerDetails
