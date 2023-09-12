@@ -17,3 +17,12 @@ extension TaxTransaction {
         }
     }
 }
+
+extension TaxTransaction.Request: URLEncodable {
+    var queryItems: [URLQueryItem] {
+        [
+            .init(name: "calculation", value: calculation),
+            .init(name: "reference", value: reference)
+        ]
+    }
+}

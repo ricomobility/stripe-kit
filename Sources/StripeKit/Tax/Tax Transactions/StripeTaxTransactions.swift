@@ -5,15 +5,13 @@ import NIOHTTP1
 
 public struct StripeTaxTransactions: TaxTransactionRoutes {
     
-    public var headers: HTTPHeaders = ["Content-Type": "application/json"]
+    public var headers: HTTPHeaders = [:]
     private let apiHandler: StripeAPIHandler
     private let taxCalculations = APIBase + APIVersion + "tax/transactions"
-    private let encoder: JSONEncoder = .init()
+    private let encoder: FormURLEncoder = .init()
     
     init(apiHandler: StripeAPIHandler) {
         self.apiHandler = apiHandler
-        encoder.dateEncodingStrategy = .secondsSince1970
-        encoder.keyEncodingStrategy = .convertToSnakeCase
     }
     
     public func create(_ request: TaxTransaction.Request) async throws -> TaxTransaction {
