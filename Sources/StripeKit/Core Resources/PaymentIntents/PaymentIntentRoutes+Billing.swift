@@ -35,7 +35,7 @@ extension PaymentIntentRoutes {
         try await create(amount: amount, currency: currency, automaticPaymentMethods: automaticPaymentMethods, confirm: confirm, customer: customer, description: description, metadata: metadata, offSession: offSession, paymentMethod: paymentMethod, receiptEmail: receiptEmail, setupFutureUsage: setupFutureUsage, shipping: shipping, statementDescriptor: statementDescriptor, statementDescriptorSuffix: statementDescriptorSuffix, applicationFeeAmount: applicationFeeAmount, captureMethod: captureMethod, confirmationMethod: confirmationMethod, errorOnRequiresAction: errorOnRequiresAction, mandate: mandate, mandateData: mandateData, onBehalfOf: onBehalfOf, paymentMethodData: paymentMethodData, paymentMethodOptions: paymentMethodOptions, paymentMethodTypes: paymentMethodTypes, radarOptions: radarOptions, returnUrl: returnUrl, transferData: transferData, transferGroup: transferGroup, useStripeSDK: useStripeSDK, expand: expand)
     }
     
-    func capture(intent: String,
+    public func capture(intent: String,
                  amountToCapture: Int? = nil,
                  applicationFeeAmount: Int? = nil,
                  statementDescriptor: String? = nil,
