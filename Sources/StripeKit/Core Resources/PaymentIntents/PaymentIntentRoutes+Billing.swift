@@ -2,7 +2,7 @@
 import Foundation
 
 extension PaymentIntentRoutes {
-    func create(amount: Int,
+    public func create(amount: Int,
                 currency: Currency,
                 automaticPaymentMethods: [String: Any]? = nil,
                 confirm: Bool? = nil,

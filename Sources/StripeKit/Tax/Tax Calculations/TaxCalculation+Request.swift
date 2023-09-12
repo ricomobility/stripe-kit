@@ -14,41 +14,6 @@ extension TaxCalculation {
             self.customerDetails = customerDetails
         }
     }
-    
-    public struct LineItem {
-        public let amount: Int
-        public let reference: String
-        
-        public init(amount: Int, reference: String) {
-            self.amount = amount
-            self.reference = reference
-        }
-    }
-    
-    public struct CustomerDetails {
-        public let address: Address
-        public let addressSource: AddressSource
-        
-        public init(address: Address, addressSource: AddressSource) {
-            self.address = address
-            self.addressSource = addressSource
-        }
-        
-        public struct Address: Encodable {
-            public let country: String
-            public let postalCode: String
-            
-            public init(country: String, postalCode: String) {
-                self.country = country
-                self.postalCode = postalCode
-            }
-        }
-        
-        public enum AddressSource: String {
-            case billing
-            case shipping
-        }
-    }
 }
 
 extension TaxCalculation.Request: URLEncodable {
