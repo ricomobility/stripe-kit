@@ -28,6 +28,10 @@ extension TaxCalculation {
     public struct CustomerDetails: Encodable {
         public let address: Address
         
+        public init(address: Address) {
+            self.address = address
+        }
+        
         public struct Address: Encodable {
             public let country: String
             public let postalCode: String
