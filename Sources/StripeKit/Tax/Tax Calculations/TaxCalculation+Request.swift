@@ -60,7 +60,7 @@ extension TaxCalculation.Request: URLEncodable {
             .init(name: "customer_details[address_source]", value: customerDetails.addressSource.rawValue)
         ]
         for (idx, value) in lineItems.enumerated() {
-            items.append(.init(name: "line_items[\(idx)][amount]", value: value.amount.formatted()))
+            items.append(.init(name: "line_items[\(idx)][amount]", value: "\(value.amount)"))
             items.append(.init(name: "line_items[\(idx)][reference]", value: value.reference))
         }
         return items
