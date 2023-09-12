@@ -122,6 +122,7 @@ public final class StripeClient {
     
     // MARK: - TAX
     public var taxCalculations: TaxCalculationRoutes
+    public var taxTransactions: TaxTransactionRoutes
     
     var handler: StripeAPIHandler
     
@@ -228,5 +229,6 @@ public final class StripeClient {
         
         webhookEndpoints = StripeWebhookEndpointRoutes(apiHandler: handler)
         taxCalculations = StripeTaxCalculations(apiHandler: handler)
+        taxTransactions = StripeTaxTransactions(apiHandler: handler)
     }
 }
