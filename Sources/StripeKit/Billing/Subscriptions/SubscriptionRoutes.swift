@@ -64,6 +64,7 @@ public protocol SubscriptionRoutes: StripeAPIRoute {
                 automaticTax: [String: Any]?,
                 backdateStartDate: Date?,
                 billingCycleAnchor: Date?,
+                billingCycleAnchorConfig: [String: Any]?,
                 billingThresholds: [String: Any]?,
                 cancelAt: Date?,
                 collectionMethod: SubscriptionCollectionMethod?,
@@ -152,6 +153,7 @@ public protocol SubscriptionRoutes: StripeAPIRoute {
                 addInvoiceItems: [[String: Any]]?,
                 applicationFeePercent: Decimal?,
                 billingCycleAnchor: String?,
+                billingCycleAnchorConfig: [String: Any]?,
                 billingThresholds: [String: Any]?,
                 cancelAt: Date?,
                 collectionMethod: SubscriptionCollectionMethod?,
@@ -244,6 +246,7 @@ public struct StripeSubscriptionRoutes: SubscriptionRoutes {
                        automaticTax: [String: Any]? = nil,
                        backdateStartDate: Date? = nil,
                        billingCycleAnchor: Date? = nil,
+                       billingCycleAnchorConfig: [String: Any]? = nil,
                        billingThresholds: [String: Any]? = nil,
                        cancelAt: Date? = nil,
                        collectionMethod: SubscriptionCollectionMethod? = nil,
@@ -309,6 +312,10 @@ public struct StripeSubscriptionRoutes: SubscriptionRoutes {
         
         if let billingCycleAnchor {
             body["billing_cycle_anchor"] = Int(billingCycleAnchor.timeIntervalSince1970)
+        }
+        
+        if let billingCycleAnchorConfig {
+            billingCycleAnchorConfig.forEach { body["billing_cycle_anchor_config[\($0)]"] = $1 }
         }
         
         if let billingThresholds {
@@ -411,6 +418,7 @@ public struct StripeSubscriptionRoutes: SubscriptionRoutes {
                        addInvoiceItems: [[String: Any]]? = nil,
                        applicationFeePercent: Decimal? = nil,
                        billingCycleAnchor: String? = nil,
+                       billingCycleAnchorConfig: [String: Any]? = nil,
                        billingThresholds: [String: Any]? = nil,
                        cancelAt: Date? = nil,
                        collectionMethod: SubscriptionCollectionMethod? = nil,
@@ -470,6 +478,10 @@ public struct StripeSubscriptionRoutes: SubscriptionRoutes {
         
         if let billingCycleAnchor {
             body["billing_cycle_anchor"] = billingCycleAnchor
+        }
+        
+        if let billingCycleAnchorConfig {
+            billingCycleAnchorConfig.forEach { body["billing_cycle_anchor_config[\($0)]"] = $1 }
         }
         
         if let billingThresholds {
